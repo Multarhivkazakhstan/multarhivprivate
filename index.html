@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="kk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>MULT архив — Жуырда</title>
+<meta name="theme-color" content="#070816">
+<script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=8KWwhVRzZgkfdSOLtVxHDYl32FpssYPKoYs7wS7gja3_goUuxj5wbYgvkbd0hkMZEHJJvuMPHVPLrdBTMqxHywu5fNuf7EKMLeF6_ChbKYgfHs6RcaP90g7kh9vigk6YJmsWh-Ih2qV9K3saA48eSyONBjfRBJ9DbsaUGTvBqzjbD2ZuVS9Nji0pGTfo8fgC_KBhk8hlwuRGWMoQS8IuVBkdJw7YV47tt2sUnYHM_Sk3VrdYhFAMW8kONyPIjAPc4qv_CXbNovwyUJYEA0iy2AACXHd4miElTUQRJ15Eczqh6rNGYQJaxXbx7eRaRvf6oPJlFuKpWK5gIFKdRH_k4A" charset="UTF-8"></script><style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+:root{--bg:#070816;--fg:#f7f8ff;--muted:#9298b7;--line:rgba(255,255,255,.1);--a:#7c5cff;--b:#00d4ff;--c:#ff4fd8}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;background-image:radial-gradient(rgba(255,255,255,.7) .7px,transparent .7px);background-size:34px 34px;mask-image:linear-gradient(to bottom,#000,transparent 80%);z-index:0}
+.noise{position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--b),var(--a),var(--c));z-index:50;box-shadow:0 0 18px #7c5cff}
+.nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);width:min(940px,calc(100% - 28px));height:64px;border:1px solid var(--line);border-radius:22px;background:rgba(8,9,25,.65);backdrop-filter:blur(18px);display:flex;align-items:center;justify-content:space-between;padding:8px 12px 8px 18px;z-index:40;box-shadow:0 12px 50px rgba(0,0,0,.28)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-weight:900;letter-spacing:-.04em}.brand img{width:40px;height:40px;object-fit:contain;filter:drop-shadow(0 0 15px rgba(124,92,255,.4))}.brand span{font-size:17px}.soon{font-size:11px;color:#b9bde0;border:1px solid var(--line);padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.04)}
+.hero{min-height:100svh;display:grid;place-items:center;position:relative;padding:130px 20px 80px;isolation:isolate}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.34;pointer-events:none}.blob.one{width:420px;height:420px;background:#6d4cff;left:-130px;top:18%}.blob.two{width:360px;height:360px;background:#00c9ff;right:-130px;bottom:12%}.blob.three{width:240px;height:240px;background:#ff35ca;left:45%;top:10%;opacity:.16}
+.hero-inner{text-align:center;max-width:980px;position:relative;z-index:2}
+.logo-wrap{width:145px;height:145px;margin:0 auto 26px;display:grid;place-items:center;position:relative}
+.logo-wrap:before,.logo-wrap:after{content:"";position:absolute;border:1px solid rgba(124,92,255,.5);border-radius:50%;inset:-16px;animation:spin 12s linear infinite}
+.logo-wrap:after{inset:-34px;border-color:rgba(0,212,255,.2);animation:spin 18s linear infinite reverse}
+.logo-wrap img{width:120px;height:120px;object-fit:contain;filter:drop-shadow(0 0 30px rgba(124,92,255,.6));animation:float 4s ease-in-out infinite}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border:1px solid var(--line);border-radius:999px;color:#c7cae4;background:rgba(255,255,255,.035);font-size:12px;font-weight:700;margin-bottom:22px}.dot{width:7px;height:7px;border-radius:50%;background:#63ffa4;box-shadow:0 0 12px #63ffa4;animation:pulse 1.5s infinite}
+h1{font-size:clamp(46px,8vw,102px);line-height:.9;letter-spacing:-.075em;margin:0;font-weight:900}h1 .grad{background:linear-gradient(100deg,#fff 10%,#a9a1ff 42%,#55e8ff 75%,#ff7de8);-webkit-background-clip:text;color:transparent;background-size:220% auto;animation:gradient 5s ease infinite}
+.hero p{max-width:650px;margin:28px auto 0;color:#9fa5c4;font-size:clamp(15px,2vw,19px);line-height:1.7}.scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);color:#656b89;font-size:10px;letter-spacing:.22em;text-transform:uppercase;display:flex;flex-direction:column;gap:10px;align-items:center}.mouse{width:22px;height:34px;border:1px solid #555b79;border-radius:20px;position:relative}.mouse:after{content:"";width:3px;height:7px;background:#fff;border-radius:3px;position:absolute;left:50%;top:7px;transform:translateX(-50%);animation:drop 1.7s infinite}
+.section{min-height:100svh;display:grid;place-items:center;padding:120px 20px;position:relative}.container{width:min(1050px,100%);position:relative;z-index:2}.section-head{margin-bottom:46px}.kicker{color:#7f86a8;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase}.section h2{font-size:clamp(38px,6vw,72px);letter-spacing:-.06em;line-height:.95;margin:12px 0}.section-head p{color:#9298b7;max-width:600px;line-height:1.7;margin:0}
+.features{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.card{min-height:285px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025));padding:28px;position:relative;overflow:hidden;transform-style:preserve-3d;transition:.5s}.card:hover{transform:translateY(-8px) rotateX(2deg);border-color:rgba(124,92,255,.5);box-shadow:0 30px 70px rgba(0,0,0,.3)}.card:before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:var(--glow);filter:blur(50px);opacity:.18;right:-70px;top:-70px}.icon{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;background:rgba(255,255,255,.07);border:1px solid var(--line);font-size:25px;margin-bottom:48px;box-shadow:inset 0 0 25px rgba(255,255,255,.03)}.card h3{font-size:25px;margin:0 0 9px;letter-spacing:-.04em}.card p{color:#8f95b5;line-height:1.6;margin:0;font-size:14px}.number{position:absolute;right:25px;top:26px;color:#505672;font-size:11px;font-weight:800}
+.chat-demo{height:520px;border:1px solid var(--line);border-radius:34px;background:rgba(255,255,255,.035);overflow:hidden;display:grid;grid-template-columns:220px 1fr;box-shadow:0 40px 100px rgba(0,0,0,.28)}.side{border-right:1px solid var(--line);padding:22px}.side-title{font-weight:800;margin-bottom:20px}.room{padding:13px;border-radius:14px;background:rgba(124,92,255,.12);margin-bottom:8px;font-size:13px}.room.muted{background:transparent;color:#707694}.messages{padding:25px;display:flex;flex-direction:column;justify-content:flex-end;gap:12px;background:radial-gradient(circle at 80% 10%,rgba(124,92,255,.12),transparent 35%)}.bubble{max-width:70%;padding:12px 15px;border-radius:17px;background:#16182d;color:#dfe2f5;font-size:13px;animation:msg 4s ease both}.bubble.you{align-self:flex-end;background:linear-gradient(135deg,#6e54ed,#5141b9)}.bubble:nth-child(2){animation-delay:.6s}.bubble:nth-child(3){animation-delay:1.2s}.bubble:nth-child(4){animation-delay:1.8s}.live-card{border:1px solid var(--line);border-radius:34px;padding:18px;background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.02));position:relative;overflow:hidden}.screen{height:440px;border-radius:24px;background:linear-gradient(135deg,#101328,#21184a 45%,#061e35);display:grid;place-items:center;position:relative;overflow:hidden}.screen:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.07) 50%,transparent 70%);transform:translateX(-100%);animation:sweep 4s infinite}.play{width:88px;height:88px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);display:grid;place-items:center;font-size:29px;backdrop-filter:blur(15px);box-shadow:0 0 60px rgba(124,92,255,.35);animation:float 3s infinite}.live-label{position:absolute;left:18px;top:18px;padding:8px 11px;border-radius:10px;background:#ff3d68;font-size:10px;font-weight:900;letter-spacing:.1em}.viewer{position:absolute;right:18px;top:18px;padding:8px 11px;border-radius:10px;background:rgba(0,0,0,.35);font-size:10px}.stream-caption{display:flex;justify-content:space-between;align-items:center;padding:18px 4px 0}.stream-caption h3{margin:0;font-size:20px}.stream-caption span{color:#777d9c;font-size:12px}
+.mod{display:grid;grid-template-columns:1fr 1fr;gap:16px}.mod-box{border:1px solid var(--line);border-radius:28px;padding:30px;min-height:260px;background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.02));overflow:hidden;position:relative}.shield{font-size:54px;filter:drop-shadow(0 0 22px rgba(0,212,255,.35));animation:float 3.5s infinite}.mod-box h3{font-size:27px;letter-spacing:-.04em}.mod-box p{color:#9096b5;line-height:1.7}.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{font-size:11px;padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--line);color:#adb2ce}
+.final{min-height:100svh;display:grid;place-items:center;text-align:center;padding:100px 20px;position:relative;overflow:hidden}.final .ring{position:absolute;width:min(700px,90vw);aspect-ratio:1;border:1px solid rgba(124,92,255,.18);border-radius:50%;animation:spin 25s linear infinite}.final .ring:after{content:"";position:absolute;inset:65px;border:1px dashed rgba(0,212,255,.13);border-radius:50%}.final-content{position:relative;z-index:2}.final h2{font-size:clamp(55px,11vw,140px);letter-spacing:-.09em;line-height:.82;margin:0}.final h2 span{display:block;background:linear-gradient(100deg,#fff,#8e83ff,#4de5ff,#ff71dc);-webkit-background-clip:text;color:transparent;background-size:250%;animation:gradient 5s infinite}.final p{color:#9ca2c0;font-size:16px;margin:30px auto;max-width:540px;line-height:1.7}.badge{display:inline-flex;padding:12px 18px;border:1px solid rgba(124,92,255,.35);border-radius:999px;background:rgba(124,92,255,.09);font-size:12px;font-weight:800;box-shadow:0 0 45px rgba(124,92,255,.12)}.tiny{margin-top:45px;color:#4f5572;font-size:10px;letter-spacing:.18em;text-transform:uppercase}
+.reveal{opacity:0;transform:translateY(60px) scale(.97);transition:1s cubic-bezier(.16,1,.3,1)}.reveal.show{opacity:1;transform:none}
+.cursor{position:fixed;width:180px;height:180px;border-radius:50%;pointer-events:none;z-index:30;background:radial-gradient(circle,rgba(124,92,255,.13),transparent 68%);transform:translate(-50%,-50%);mix-blend-mode:screen}
+@keyframes float{50%{transform:translateY(-10px)}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes pulse{50%{transform:scale(1.35);opacity:.5}}@keyframes gradient{50%{background-position:100% 50%}}@keyframes drop{70%{transform:translate(-50%,10px);opacity:0}}@keyframes sweep{55%,100%{transform:translateX(100%)}}@keyframes msg{0%{opacity:0;transform:translateY(14px) scale(.97)}18%,100%{opacity:1;transform:none}}
+@media(max-width:700px){.nav{height:58px;border-radius:18px}.brand span{font-size:15px}.soon{font-size:9px;padding:7px 9px}.features,.mod{grid-template-columns:1fr}.card{min-height:240px}.chat-demo{grid-template-columns:1fr;height:470px}.side{display:none}.screen{height:360px}.section{padding:100px 16px}.hero{padding-left:16px;padding-right:16px}.logo-wrap{width:115px;height:115px}.logo-wrap img{width:95px;height:95px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<style id="mobile-optimization">
+/* ===== MULT ARCHIVE — MOBILE OPTIMIZATION ===== */
+html { scroll-behavior: smooth; }
+body { overflow-x: hidden; }
+
+@media (max-width: 700px) {
+  :root {
+    --pad: 18px;
+  }
+
+  body {
+    min-width: 0 !important;
+    font-size: 14px;
+  }
+
+  .nav,
+  header,
+  .top,
+  .navbar {
+    width: calc(100% - 20px) !important;
+    max-width: none !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    padding: 10px 12px !important;
+    border-radius: 18px !important;
+    gap: 10px !important;
+  }
+
+  .nav img,
+  header img,
+  .top img {
+    max-width: 88px !important;
+    max-height: 42px !important;
+  }
+
+  .nav a {
+    display: none !important;
+  }
+
+  .nav .pill,
+  .nav .badge,
+  .nav button {
+    font-size: 11px !important;
+    padding: 7px 10px !important;
+    white-space: nowrap;
+  }
+
+  section,
+  .section,
+  main > section {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .hero {
+    min-height: 100svh !important;
+    padding: 108px 18px 50px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .hero-inner,
+  .hero-content {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 13vw, 68px) !important;
+    line-height: .94 !important;
+    letter-spacing: -0.055em !important;
+    word-break: normal;
+  }
+
+  .hero p {
+    max-width: 100% !important;
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+  }
+
+  .hero .logo,
+  .hero img {
+    max-width: min(78vw, 290px) !important;
+    height: auto !important;
+  }
+
+  .hero-actions,
+  .actions,
+  .buttons {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .hero-actions a,
+  .hero-actions button,
+  .actions a,
+  .actions button {
+    width: 100% !important;
+    min-height: 48px !important;
+    justify-content: center !important;
+  }
+
+  .features,
+  .feature-grid,
+  .cards,
+  .archive-grid,
+  .chat-grid,
+  .mock-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .feature-card,
+  .card,
+  .archive-card,
+  .chat-card,
+  .live-card,
+  .moderator-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 20px !important;
+    border-radius: 24px !important;
+  }
+
+  .section-title,
+  .section h2 {
+    font-size: clamp(34px, 10vw, 52px) !important;
+    line-height: 1 !important;
+    letter-spacing: -0.045em !important;
+  }
+
+  .section-lead,
+  .section p {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+
+  .chat-window,
+  .live-window,
+  .screen,
+  .mock-screen {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    border-radius: 22px !important;
+    overflow: hidden !important;
+  }
+
+  .chat-window {
+    padding: 12px !important;
+  }
+
+  .message,
+  .chat-message {
+    max-width: 88% !important;
+    font-size: 13px !important;
+  }
+
+  .live-video,
+  .video-frame,
+  .screen-video {
+    aspect-ratio: 16 / 10 !important;
+    min-height: 0 !important;
+  }
+
+  .live-controls,
+  .video-controls {
+    gap: 7px !important;
+    padding: 9px !important;
+  }
+
+  .live-controls button,
+  .video-controls button {
+    min-width: 40px !important;
+    min-height: 40px !important;
+  }
+
+  .chips,
+  .feature-chips,
+  .tags {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 7px !important;
+  }
+
+  .chip,
+  .tag {
+    font-size: 11px !important;
+    padding: 8px 10px !important;
+  }
+
+  .archive-card {
+    min-height: 145px !important;
+  }
+
+  .archive-card .icon {
+    font-size: 28px !important;
+  }
+
+  .final,
+  .final-cta {
+    min-height: 88svh !important;
+    padding: 80px 18px 55px !important;
+  }
+
+  .final h2,
+  .final-cta h2 {
+    font-size: clamp(43px, 13vw, 72px) !important;
+    line-height: .9 !important;
+    letter-spacing: -0.06em !important;
+  }
+
+  .final p,
+  .final-cta p {
+    font-size: 14px !important;
+  }
+
+  footer {
+    padding: 28px 18px 36px !important;
+    text-align: center !important;
+  }
+
+  /* Prevent desktop hover/tilt behavior from making touch scrolling awkward. */
+  .tilt,
+  .feature-card,
+  .card {
+    transform: none !important;
+  }
+
+  /* Keep decorative elements inside the viewport. */
+  .blob,
+  .orb,
+  .glow,
+  .ring {
+    max-width: 75vw !important;
+    max-height: 75vw !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero { padding-top: 100px !important; }
+  .hero h1 { font-size: 40px !important; }
+  .section-title,
+  .section h2 { font-size: 33px !important; }
+  .final h2,
+  .final-cta h2 { font-size: 41px !important; }
+  .nav { width: calc(100% - 14px) !important; }
+  .nav img { max-width: 78px !important; }
+}
+
+@media (min-width: 701px) {
+  /* Desktop remains unchanged. */
+}
+</style>
+
+
+<style id="mult-world-extra">
+.mult-world-section{
+  min-height:100svh;padding:110px 18px 90px;display:grid;place-items:center;
+  position:relative;overflow:hidden;background:
+  radial-gradient(circle at 20% 30%,rgba(124,92,255,.12),transparent 32%),
+  radial-gradient(circle at 80% 70%,rgba(0,212,255,.09),transparent 30%);
+}
+.mult-world-inner{width:min(1050px,100%);position:relative;z-index:2;text-align:center}
+.world-kicker{font-size:11px;letter-spacing:.25em;font-weight:900;color:#7f86a8;margin-bottom:14px}
+.mult-world-inner h2{font-size:clamp(40px,6vw,76px);line-height:.92;letter-spacing:-.065em;margin:0}
+.mult-world-inner h2 span{background:linear-gradient(100deg,#fff,#8d83ff,#4de5ff);-webkit-background-clip:text;color:transparent}
+.world-lead{max-width:580px;margin:20px auto 35px;color:#9298b7;line-height:1.7;font-size:14px}
+.world-stage{
+  height:470px;border:1px solid rgba(255,255,255,.1);border-radius:36px;
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 15%,rgba(91,105,255,.3),transparent 30%),
+    linear-gradient(180deg,#10183b 0%,#080a20 100%);
+  box-shadow:0 40px 110px rgba(0,0,0,.4),inset 0 0 80px rgba(124,92,255,.08);
+}
+.world-stars,.world-stars:before,.world-stars:after{
+  position:absolute;inset:0;content:"";pointer-events:none;
+  background-image:radial-gradient(circle,rgba(255,255,255,.8) 1px,transparent 1.5px);
+  background-size:83px 71px;opacity:.35;animation:worldStars 13s linear infinite;
+}
+.world-stars:before{background-size:137px 113px;opacity:.25;animation-duration:19s}
+.world-stars:after{background-size:47px 101px;opacity:.18;animation-duration:25s}
+.world-island{position:absolute;border-radius:50%;filter:blur(.2px);box-shadow:0 20px 45px rgba(0,0,0,.4)}
+.island-a{width:260px;height:75px;left:8%;bottom:62px;background:linear-gradient(160deg,#314a78,#111934);transform:rotate(-5deg)}
+.island-b{width:230px;height:68px;right:7%;top:72px;background:linear-gradient(160deg,#354c7b,#111934);transform:rotate(7deg)}
+.world-path{position:absolute;width:360px;height:360px;border:1px dashed rgba(104,217,255,.16);border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);animation:worldOrbit 16s linear infinite}
+.mascot{position:absolute;left:50%;top:50%;width:90px;height:105px;transform:translate(-50%,-50%);cursor:pointer;z-index:8;transition:transform .35s cubic-bezier(.2,1.5,.4,1)}
+.mascot:hover{transform:translate(-50%,-50%) scale(1.08)}
+.mascot-body{position:absolute;left:13px;top:8px;width:64px;height:70px;border-radius:45% 45% 42% 42%;background:linear-gradient(145deg,#7c5cff,#31237b);border:2px solid rgba(255,255,255,.35);box-shadow:0 0 35px rgba(124,92,255,.55),inset 0 8px 20px rgba(255,255,255,.12);animation:mascotFloat 2.8s ease-in-out infinite}
+.mascot-ear{position:absolute;width:23px;height:23px;background:#5c45c6;border:2px solid rgba(255,255,255,.25);top:-8px;transform:rotate(45deg);z-index:-1}
+.mascot-ear.left{left:3px}.mascot-ear.right{right:3px}
+.mascot-eye{position:absolute;width:9px;height:12px;background:#fff;border-radius:50%;top:27px;box-shadow:0 0 9px #fff}
+.mascot-eye:after{content:"";position:absolute;width:4px;height:6px;border-radius:50%;background:#17142e;left:3px;top:3px}
+.mascot-eye.e1{left:17px}.mascot-eye.e2{right:17px}
+.mascot-mouth{position:absolute;width:13px;height:7px;border-bottom:2px solid #fff;border-radius:0 0 15px 15px;left:50%;transform:translateX(-50%);top:44px}
+.mascot-logo{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);font-weight:900;font-size:13px;color:#fff}
+.mascot-shadow{position:absolute;width:65px;height:13px;background:rgba(0,0,0,.35);filter:blur(7px);left:13px;bottom:7px;border-radius:50%;animation:shadowPulse 2.8s ease-in-out infinite}
+.mascot-bubble{
+  position:absolute;white-space:nowrap;left:50%;top:-53px;transform:translateX(-50%);
+  background:rgba(8,9,25,.9);border:1px solid rgba(255,255,255,.14);
+  padding:10px 13px;border-radius:13px;color:#fff;font-size:11px;font-weight:800;
+  box-shadow:0 15px 35px rgba(0,0,0,.35);backdrop-filter:blur(12px);
+}
+.mascot-bubble:after{content:"";position:absolute;bottom:-5px;left:50%;width:9px;height:9px;background:rgba(8,9,25,.9);border-right:1px solid rgba(255,255,255,.14);border-bottom:1px solid rgba(255,255,255,.14);transform:translateX(-50%) rotate(45deg)}
+.mascot.running{animation:mascotRun .75s cubic-bezier(.2,.8,.2,1) forwards}
+.world-sign{
+  position:absolute;padding:12px 14px;border:1px solid rgba(255,255,255,.11);
+  background:rgba(9,11,29,.72);border-radius:16px;backdrop-filter:blur(12px);
+  color:#eef0ff;font-size:13px;box-shadow:0 12px 30px rgba(0,0,0,.25);
+  display:flex;flex-direction:column;gap:3px;text-align:left
+}
+.world-sign small{font-size:9px;color:#7f86a8}.sign-archive{left:8%;bottom:105px}.sign-chat{right:9%;bottom:120px}.sign-live{right:14%;top:115px}
+.waiting-counter{
+  width:min(390px,calc(100% - 20px));margin:25px auto 0;padding:17px 20px;
+  border:1px solid rgba(124,92,255,.28);border-radius:24px;
+  background:linear-gradient(145deg,rgba(124,92,255,.13),rgba(0,212,255,.045));
+  display:flex;align-items:center;text-align:left;position:relative;overflow:hidden;
+  box-shadow:0 18px 60px rgba(0,0,0,.3),0 0 50px rgba(124,92,255,.08)
+}
+.counter-icon{width:48px;height:48px;border-radius:15px;background:rgba(255,255,255,.08);display:grid;place-items:center;font-size:22px;margin-right:14px}
+.counter-copy{display:flex;flex-direction:column;gap:2px}.counter-copy span{font-size:10px;color:#8e95b5}.counter-copy strong{font-size:32px;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.04em}.counter-copy small{font-size:9px;color:#646b8b;margin-top:2px}
+.counter-pulse{position:absolute;width:120px;height:120px;border-radius:50%;right:-60px;top:-60px;border:1px solid rgba(0,212,255,.25);animation:counterPulse 3s infinite}
+.counter-note{margin-top:10px;font-size:9px;color:#555c79;letter-spacing:.04em}
+@keyframes mascotFloat{50%{transform:translateY(-8px) rotate(-2deg)}}
+@keyframes shadowPulse{50%{transform:scaleX(.75);opacity:.5}}
+@keyframes worldStars{to{transform:translateY(70px)}}
+@keyframes worldOrbit{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes counterPulse{50%{transform:scale(1.35);opacity:.35}}
+@keyframes mascotRun{
+  20%{transform:translate(-20px,-70px) rotate(-8deg) scale(.95)}
+  45%{transform:translate(85px,-40px) rotate(10deg) scale(.9)}
+  70%{transform:translate(150px,50px) rotate(-12deg) scale(.8)}
+  100%{transform:translate(250px,120px) rotate(15deg) scale(.65);opacity:.15}
+}
+@media(max-width:700px){
+  .mult-world-section{padding:95px 14px 75px}
+  .world-stage{height:430px;border-radius:27px}
+  .world-path{width:270px;height:270px}
+  .island-a{width:190px;height:55px;left:-5%;bottom:55px}
+  .island-b{width:170px;height:50px;right:-4%;top:70px}
+  .sign-archive{left:5%;bottom:92px}.sign-chat{right:4%;bottom:100px}.sign-live{right:7%;top:108px}
+  .world-sign{padding:9px 10px;font-size:10px}.world-sign small{font-size:8px}
+  .mascot{top:53%}
+  .waiting-counter{width:100%}
+}
+</style>
+
+</head>
+<body>
+<div class="noise"></div><div class="progress"></div><div class="cursor"></div>
+<nav class="nav"><a class="brand" href="#top"><img src="assets/asset-1.png"><span>MULT архив</span></a><span class="soon">ЖУЫРДА</span></nav>
+
+<main id="top">
+<section class="hero">
+<div class="blob one"></div><div class="blob two"></div><div class="blob three"></div>
+<div class="hero-inner">
+<div class="logo-wrap"><img src="assets/asset-2.png"></div>
+<div class="eyebrow"><i class="dot"></i> Жаңа архив платформасы</div>
+<h1>Мультфильмдер.<br><span class="grad">Бір жерде.</span></h1>
+<p>Көптен күткен MULT архивтің жаңа мүмкіндіктері біртіндеп іске қосылады. Бұл — толық сайттың алдындағы шағын таныстырылым.</p>
+</div>
+<div class="scroll">төмен жылжытыңыз<div class="mouse"></div></div>
+</section>
+
+<section class="section">
+<div class="container reveal"><div class="section-head"><div class="kicker">01 / Қарым-қатынас</div><h2>Чат.<br>Бірге көру.</h2><p>Мультфильм көріп отырып, басқа көрермендермен сөйлесуге арналған жаңа орта.</p></div>
+<div class="chat-demo">
+<aside class="side"><div class="side-title">MULT чат</div><div class="room">💬 Жалпы чат</div><div class="room muted">📺 Қазір эфирде</div><div class="room muted">⭐ Ұсыныстар</div></aside>
+<div class="messages"><div class="bubble">Сәлем! Қай мультфильмді бастаймыз? 👋</div><div class="bubble">Бүгін архивтен ескі бөлім көрейік!</div><div class="bubble you">Келістік! 📺</div><div class="bubble">MULT архивте бірге көреміз ✨</div></div>
+</div></div>
+</section>
+
+<section class="section">
+<div class="container reveal"><div class="section-head"><div class="kicker">02 / Тікелей эфир</div><h2>Эфир жүріп тұр.<br>Сен де көр.</h2><p>Тікелей эфирлерде мультфильмдер ортақ уақытпен көрсетіледі. Ойнатуды басқару — эфир жүргізушісінде.</p></div>
+<div class="live-card"><div class="screen"><span class="live-label">● LIVE</span><span class="viewer">👁 1 284 көрермен</span><div class="play">▶</div></div><div class="stream-caption"><h3>Қазір көрсетілуде</h3><span>Эфир аяқталғанда ғана тоқтайды</span></div></div></div>
+</section>
+
+<section class="section">
+<div class="container reveal"><div class="section-head"><div class="kicker">03 / Модерация</div><h2>Модератор бол.<br>Архивке үлес қос.</h2><p>Қауымдастықтағы тәртіп пен сапаны сақтауға көмектесетін арнайы рөлдер.</p></div>
+<div class="mod"><div class="mod-box"><div class="shield">🛡️</div><h3>Модератор режимі</h3><p>Басқару құралдары, эфир бақылауы және қауымдастықтағы тәртіпке арналған мүмкіндіктер.</p></div><div class="mod-box"><h3>Арнайы мүмкіндіктер</h3><div class="chips"><span class="chip">Эфирді басқару</span><span class="chip">Чатты бақылау</span><span class="chip">Контентті тексеру</span><span class="chip">Қауымдастық</span></div></div></div></div>
+</section>
+
+<section class="section">
+<div class="container reveal"><div class="section-head"><div class="kicker">04 / Көру</div><h2>Архив.<br>Естелік. Қайта.</h2><p>Балалық шақтағы мультфильмдерге арналған үлкен кітапхана. Іздеу, таңдау және көру — бәрі бір жерде.</p></div>
+<div class="features">
+<div class="card" style="--glow:#7c5cff"><span class="number">01</span><div class="icon">🔎</div><h3>Іздеу</h3><p>Керек мультфильмді тез тауып, архив ішінен қайта ашу.</p></div>
+<div class="card" style="--glow:#00d4ff"><span class="number">02</span><div class="icon">📺</div><h3>Көру</h3><p>Мультфильмдерді ыңғайлы плеер арқылы тамашалау.</p></div>
+<div class="card" style="--glow:#ff4fd8"><span class="number">03</span><div class="icon">❤️</div><h3>Таңдаулылар</h3><p>Өзіңе ұнаған мультфильмдерді бір жерде сақтап қою.</p></div>
+<div class="card" style="--glow:#63ffa4"><span class="number">04</span><div class="icon">🗂️</div><h3>Архив</h3><p>Мультфильмдерді ретімен тауып, өткенді қайта еске түсіру.</p></div>
+</div></div>
+</section>
+
+
+<!-- MULT WORLD: interactive mascot + waiting counter -->
+<section class="mult-world-section" id="mult-world">
+  <div class="mult-world-bg"></div>
+  <div class="mult-world-inner">
+    <div class="world-kicker">MULT WORLD</div>
+    <h2>Архивтің ішінде<br><span>кішкентай әлем бар.</span></h2>
+    <p class="world-lead">Кішкентай кейіпкерді тауып көр. Оны бассаң — ол саған реакция береді.</p>
+
+    <div class="world-stage" id="worldStage">
+      <div class="world-stars"></div>
+      <div class="world-island island-a"></div>
+      <div class="world-island island-b"></div>
+      <div class="world-path"></div>
+
+      <div class="mascot" id="multMascot" role="button" tabindex="0" aria-label="MULT кейіпкері">
+        <div class="mascot-shadow"></div>
+        <div class="mascot-body">
+          <div class="mascot-ear left"></div>
+          <div class="mascot-ear right"></div>
+          <div class="mascot-eye e1"></div>
+          <div class="mascot-eye e2"></div>
+          <div class="mascot-mouth"></div>
+          <div class="mascot-logo">M</div>
+        </div>
+        <div class="mascot-bubble" id="mascotBubble">Оны түртпе 👀</div>
+      </div>
+
+      <div class="world-sign sign-archive">📺 <b>Архив</b><small>Мультфильмдер</small></div>
+      <div class="world-sign sign-chat">💬 <b>Чат</b><small>Бірге сөйлес</small></div>
+      <div class="world-sign sign-live">🔴 <b>LIVE</b><small>Тікелей эфир</small></div>
+    </div>
+
+    <div class="waiting-counter">
+      <div class="counter-icon">👥</div>
+      <div class="counter-copy">
+        <span>Қазір күтіп отырғандар</span>
+        <strong id="waitingNumber">12 847</strong>
+        <small>MULT архивін күтушілер</small>
+      </div>
+      <div class="counter-pulse"></div>
+    </div>
+
+    <div class="counter-note">Демонстрациялық есептегіш · нақты статистика емес</div>
+  </div>
+</section>
+
+<section class="final">
+<div class="ring"></div>
+<div class="final-content reveal">
+<div class="logo-wrap"><img src="assets/asset-3.png"></div>
+<div class="kicker">MULT архив</div>
+<h2>ЖУЫРДА<br><span>ТОЛЫҚ САЙТ.</span></h2>
+<p>Тіркелу, чат, тікелей эфирлер, модератор жүйесі және мультфильмдер архиві — бәрі бір жерде.</p>
+<div class="badge">✦ Тіркелу жақында ашылады</div>
+<div class="tiny">Балалық шақтың естеліктері қайта оралады</div>
+</div>
+</section>
+</main>
+<script>
+const progress=document.querySelector('.progress');
+const cursor=document.querySelector('.cursor');
+window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;progress.style.width=(scrollY/h*100)+'%'});
+window.addEventListener('pointermove',e=>{cursor.animate({left:e.clientX+'px',top:e.clientY+'px'},{duration:500,fill:'forwards'})});
+const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.16});
+document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
+document.querySelectorAll('.card').forEach(card=>{
+ card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(700px) rotateX(${-y*5}deg) rotateY(${x*6}deg) translateY(-8px)`});
+ card.addEventListener('pointerleave',()=>card.style.transform='');
+});
+</script>
+
+<script id="mult-world-extra-js">
+(() => {
+  const mascot = document.getElementById('multMascot');
+  const bubble = document.getElementById('mascotBubble');
+  const number = document.getElementById('waitingNumber');
+  if (!mascot || !bubble || !number) return;
+
+  let clicked = false;
+  const messages = [
+    'Оны түртпе 👀',
+    'Әй, мені ұстай алмадың 😂',
+    'Тағы ұстап көрші 😎',
+    'Мен MULT әлемін күзетемін!',
+    'Жақында толық сайтта кездесеміз!'
+  ];
+
+  mascot.addEventListener('click', () => {
+    if (clicked) return;
+    clicked = true;
+    bubble.textContent = messages[1];
+    mascot.classList.add('running');
+
+    setTimeout(() => {
+      bubble.textContent = messages[2];
+      mascot.classList.remove('running');
+      mascot.style.left = '72%';
+      mascot.style.top = '66%';
+      mascot.style.transform = 'translate(-50%,-50%) scale(.92)';
+    }, 900);
+
+    setTimeout(() => {
+      bubble.textContent = messages[3];
+    }, 2200);
+
+    setTimeout(() => {
+      bubble.textContent = messages[4];
+    }, 4300);
+  });
+
+  mascot.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      mascot.click();
+    }
+  });
+
+  // Demonstration-only animated counter:
+  // moves naturally between 45 and 89, rising and falling in small steps.
+  let current = 45;
+  let direction = 1;
+
+  function animateWaitingCount() {
+    // Occasionally reverse direction to create a natural rise/fall pattern.
+    if (current >= 89) direction = -1;
+    if (current <= 45) direction = 1;
+
+    // Small movement most of the time, with occasional bigger jumps.
+    const roll = Math.random();
+    let step;
+    if (roll < 0.68) step = 1;
+    else if (roll < 0.92) step = 2;
+    else step = 3;
+
+    current += direction * step;
+
+    // Keep the counter strictly inside the requested 45–89 range.
+    if (current > 89) current = 89;
+    if (current < 45) current = 45;
+
+    number.textContent = String(current);
+  }
+
+  number.textContent = String(current);
+
+  // The number changes slowly so visitors can notice the movement.
+  setInterval(animateWaitingCount, 1700);
+})();
+</script>
+
+</body></html>
