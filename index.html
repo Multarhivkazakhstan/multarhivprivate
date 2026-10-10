@@ -1,459 +1,366 @@
-here<!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="kk">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>MultАрхивЧаты</title>
-<style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#0d1117;color:#fff}
-button,input{font:inherit}button{cursor:pointer;border:0}.hidden{display:none!important}
-#auth{min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px}
-.auth{width:420px;max-width:100%;background:#161b22;border:1px solid #30363d;border-radius:20px;padding:30px;box-shadow:0 20px 60px #0008}
-.logo{font-size:30px;font-weight:bold;text-align:center;margin-bottom:5px}.subtitle{text-align:center;color:#8b949e;margin-bottom:25px}
-.tabs{display:flex;gap:8px;margin-bottom:15px}.tabs button{flex:1;padding:12px;border-radius:10px;background:#21262d;color:#fff}.tabs .active{background:#238636}
-.form{display:flex;flex-direction:column;gap:12px}input{padding:13px;border-radius:10px;border:1px solid #30363d;background:#0d1117;color:white;outline:none}input:focus{border-color:#58a6ff}
-.main-btn{padding:13px;border-radius:10px;background:#238636;color:#fff}.error{color:#ff7b72;text-align:center;margin-top:10px;min-height:18px}
-.rules-login{margin-top:20px;padding:14px;border-radius:10px;background:#0d1117;color:#8b949e;font-size:13px}
-header{height:65px;background:#161b22;border-bottom:1px solid #30363d;display:flex;justify-content:space-between;align-items:center;padding:0 25px;position:sticky;top:0;z-index:20}
-.header-title{font-size:21px;font-weight:bold}.header-right{display:flex;gap:15px;align-items:center}.online{color:#3fb950}.logout{background:#30363d;color:white;padding:9px 14px;border-radius:9px}
-.container{width:1200px;max-width:96%;margin:20px auto;display:grid;grid-template-columns:1fr 340px;gap:18px}.card{background:#161b22;border:1px solid #30363d;border-radius:16px}
-.chat{min-height:calc(100vh - 105px);display:flex;flex-direction:column;overflow:hidden}
-.chat-top{padding:15px 18px;border-bottom:1px solid #30363d;display:flex;justify-content:space-between;align-items:center}.chat-name{font-size:18px;font-weight:bold}
-.chat-actions{display:flex;gap:8px}.chat-actions button{padding:8px 12px;border-radius:8px;background:#21262d;color:#fff}.chat-actions .admin{background:#9e7c00}
-.messages{flex:1;padding:18px;overflow-y:auto;min-height:400px}.message{display:flex;gap:10px;margin-bottom:18px}
-.avatar{width:42px;height:42px;min-width:42px;border-radius:50%;background:#30363d;display:flex;align-items:center;justify-content:center;overflow:hidden;font-size:20px}
-.avatar img{width:100%;height:100%;object-fit:cover}.message-content{max-width:80%}.message-header{margin-bottom:3px}
-.username{font-weight:bold}.user{color:white}.moderator{color:#ff4d4d}.admin-name{color:#f2cc60}.message-time{font-size:11px;color:#8b949e;margin-left:8px}
-.message-text{white-space:pre-wrap;word-break:break-word;line-height:1.4}.message-image{max-width:450px;max-height:350px;border-radius:12px;margin-top:5px}
-.composer{border-top:1px solid #30363d;padding:10px}.emojis{display:flex;gap:5px;margin-bottom:8px;flex-wrap:wrap}.emojis button{background:#21262d;border-radius:8px;padding:5px 8px}
-.send{display:flex;gap:8px}.send input{flex:1}.send button{background:#238636;color:#fff;padding:12px 18px;border-radius:9px}
-.side{display:flex;flex-direction:column;gap:18px}.side-card{padding:17px}.side-card h3{margin-top:0}
-.profile{display:flex;align-items:center;gap:12px}.profile .avatar{width:60px;height:60px}.role{font-size:13px;margin-top:3px}.id{font-family:monospace;color:#8b949e;font-size:12px;margin-top:4px}
-.upload{display:block;text-align:center;padding:10px;background:#21262d;border-radius:9px;margin-top:14px;cursor:pointer}.rules{padding-left:20px;color:#c9d1d9;font-size:14px}.rules li{margin-bottom:9px}
-.user-list{max-height:300px;overflow:auto}.user-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid #21262d;gap:8px}
-.user-info{display:flex;align-items:center;gap:8px;min-width:0}.small-avatar{width:32px;height:32px;border-radius:50%;background:#30363d;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.small-avatar img{width:100%;height:100%;object-fit:cover}.user-actions{display:flex;gap:4px}.user-actions button{font-size:11px;padding:5px 7px;border-radius:6px;background:#30363d;color:white}
-.update{font-size:13px;color:#8b949e;line-height:1.5}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <title>MULTАрхив🇰🇿Forum</title>
 
-/* MULTАРХИВЧАТЫ — кинематографиялық қабат */
-body{
-  background:#050816!important;
-  background-image:
-    radial-gradient(circle at 15% 10%,rgba(91,83,255,.24),transparent 32%),
-    radial-gradient(circle at 90% 85%,rgba(255,78,191,.18),transparent 30%)!important;
-  font-family:Inter,Arial,sans-serif!important;
-}
-body:before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
-  background-image:linear-gradient(rgba(110,140,255,.06) 1px,transparent 1px),
-  linear-gradient(90deg,rgba(110,140,255,.06) 1px,transparent 1px);
-  background-size:50px 50px;animation:chatGrid 18s linear infinite;
-}
-@keyframes chatGrid{to{background-position:0 500px,500px 0}}
-header,.card,.auth{
-  background:linear-gradient(145deg,rgba(18,25,61,.84),rgba(8,13,35,.78))!important;
-  border:1px solid rgba(148,163,255,.2)!important;
-  box-shadow:0 18px 70px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.06)!important;
-  backdrop-filter:blur(22px);
-}
-header{height:76px!important}
-.header-title,.logo{font-weight:900!important;letter-spacing:-1px}
-.header-title,.logo{background:linear-gradient(100deg,#fff,#a9eaff,#c5a7ff,#ffb0e6);-webkit-background-clip:text;background-clip:text;color:transparent}
-.main-btn,.send button{
-  background:linear-gradient(100deg,#5ce1ff,#8c80ff,#ff66c4)!important;
-  color:#071024!important;font-weight:800;box-shadow:0 0 28px rgba(123,121,255,.28);
-}
-.chat-actions button,.logout,.emojis button,.user-actions button{
-  background:rgba(255,255,255,.07)!important;border:1px solid rgba(255,255,255,.12)!important;
-}
-.container{max-width:1400px!important;grid-template-columns:minmax(0,1fr) 350px!important}
-.video-stage{
-  margin:18px;
-  border-radius:22px;
-  overflow:hidden;
-  position:relative;
-  background:#02040d;
-  border:1px solid rgba(117,158,255,.3);
-  box-shadow:0 0 55px rgba(72,82,255,.16),inset 0 1px rgba(255,255,255,.08);
-}
-.video-head{
-  display:flex;justify-content:space-between;align-items:center;gap:10px;
-  padding:13px 15px;background:rgba(12,18,45,.86);border-bottom:1px solid rgba(255,255,255,.1);
-}
-.live-label{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase}
-.live-dot{width:8px;height:8px;border-radius:50%;background:#ff4d91;box-shadow:0 0 15px #ff4d91;animation:livePulse 1.5s infinite}
-@keyframes livePulse{50%{transform:scale(1.8);opacity:.3}}
-.video-wrap{aspect-ratio:16/9;position:relative;background:radial-gradient(circle,#1d2456,#030510 70%);display:grid;place-items:center}
-#liveVideo{width:100%;height:100%;object-fit:contain;background:#02040d}
-.video-placeholder{text-align:center;padding:25px;color:#aeb8dc}
-.video-placeholder .big{font-size:55px;margin-bottom:12px;animation:floatVideo 4s ease-in-out infinite}
-@keyframes floatVideo{50%{transform:translateY(-10px) scale(1.05)}}
-.video-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:12px 14px;background:rgba(12,18,45,.86)}
-.video-tools button,.video-tools label{
-  border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.07);color:#fff;
-  padding:9px 12px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;
-}
-.video-tools .primary{background:linear-gradient(100deg,#5ce1ff,#a78bfa);color:#071024;border:0}
-.video-tools input[type=range]{width:100px;accent-color:#a78bfa}
-.admin-video-panel{padding:0 18px 18px;display:none}
-.admin-video-panel.show{display:block}
-.video-note{font-size:12px;line-height:1.5;color:#aeb8dc;margin:0 0 10px}
-.live-status{font-size:11px;color:#aeb8dc}
-.live-status.active{color:#7dffc2}
-@media(max-width:850px){
- .container{grid-template-columns:1fr!important}
- .video-stage{margin:12px}
- .video-tools{gap:6px}
- .video-tools button,.video-tools label{padding:8px 9px;font-size:11px}
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-@media(max-width:850px){.container{grid-template-columns:1fr}.side{order:2}.chat{min-height:75vh}header{padding:0 12px}.header-title{font-size:17px}.header-right{gap:6px}}
-</style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 24px 16px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(ellipse at top, #30240a, #0a0a0a 65%);
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
 
-<style>
-.yt-stage{margin:18px 0;padding:18px;border:1px solid rgba(154,137,255,.28);border-radius:24px;background:linear-gradient(145deg,rgba(25,28,66,.94),rgba(12,15,34,.96));box-shadow:0 18px 60px rgba(0,0,0,.24),inset 0 1px rgba(255,255,255,.06)}
-.yt-stage-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin-bottom:14px}
-.yt-stage h3{margin:3px 0 5px;font-size:clamp(20px,3vw,30px)}
-.yt-note{margin:0;color:#aeb5d3;font-size:13px}
-.eyebrow{font-size:10px;letter-spacing:2px;color:#a9a1ff;font-weight:800}
-.yt-status{white-space:nowrap;border:1px solid rgba(117,255,185,.25);background:rgba(54,190,126,.12);color:#8ff2bd;padding:7px 10px;border-radius:999px;font-size:11px}
-.yt-frame-wrap{position:relative;overflow:hidden;border-radius:18px;background:#05060d;aspect-ratio:16/9;border:1px solid rgba(255,255,255,.09)}
-#youtubeFrame{display:none;width:100%;height:100%;border:0}
-.yt-placeholder{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;color:#c6cae4;gap:8px}
-.yt-placeholder span{display:grid;place-items:center;width:58px;height:58px;border-radius:18px;background:linear-gradient(135deg,#ff3f68,#8b5cf6);font-size:26px;box-shadow:0 10px 35px rgba(139,92,246,.28)}
-.yt-placeholder b{font-size:15px}
-.yt-placeholder small{max-width:360px;color:#777f9f;font-size:12px}
-.yt-controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.yt-controls input{flex:1;min-width:220px;padding:12px 13px;border-radius:13px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.24);color:inherit;outline:none}
-.yt-controls button{padding:11px 14px;border:0;border-radius:13px;background:linear-gradient(135deg,#8b5cf6,#ec4899);color:white;font-weight:800;cursor:pointer}
-.yt-controls button.secondary{background:rgba(255,255,255,.09)}
-@media(max-width:600px){.yt-stage-head{flex-direction:column}.yt-status{align-self:flex-start}}
-</style>
+    .container {
+      width: 100%;
+      max-width: 650px;
+      text-align: center;
+    }
 
+    .logo {
+      display: block;
+      width: 165px;
+      height: 165px;
+      object-fit: contain;
+      margin: 0 auto 12px;
+      filter: drop-shadow(0 0 18px #f5c33c35);
+    }
 
-<style>
-/* 📱 Телефонға арналған бейімдеу */
-@media (max-width: 700px){
-  *{box-sizing:border-box}
-  body{margin:0;padding:8px;font-size:14px;overflow-x:hidden}
-  .container,.app,.shell,.main-container{width:100%!important;max-width:100%!important;margin:0!important;padding:8px!important}
-  header,.topbar,.nav,.chat-top,.yt-stage-head{gap:10px!important;flex-wrap:wrap!important}
-  h1{font-size:clamp(23px,7vw,34px)!important;line-height:1.08}
-  h2,h3{font-size:clamp(18px,5.5vw,26px)!important}
-  button,.btn{min-height:42px;padding:10px 12px!important;font-size:13px!important}
-  input,textarea,select{font-size:16px!important;max-width:100%!important}
-  .yt-stage{padding:11px!important;border-radius:18px!important;margin:10px 0!important}
-  .yt-frame-wrap{border-radius:13px!important;aspect-ratio:16/10!important}
-  .yt-controls{display:grid!important;grid-template-columns:1fr!important}
-  .yt-controls input,.yt-controls button{width:100%!important;min-width:0!important}
-  .messages,.chat-messages,.message-list{max-height:52vh!important;overflow-y:auto!important}
-  .message,.chat-message{max-width:94%!important;word-break:break-word}
-  .composer,.chat-input,.message-form{display:grid!important;grid-template-columns:1fr auto!important;gap:7px!important}
-  .composer textarea,.chat-input textarea{grid-column:1/-1!important}
-  .sidebar,.profile-panel{width:100%!important;position:static!important}
-  .avatar{width:36px!important;height:36px!important}
-}
-@media (max-width:380px){
-  body{padding:4px}
-  .composer,.chat-input,.message-form{grid-template-columns:1fr!important}
-  .composer button,.chat-input button,.message-form button{width:100%!important}
-}
-/* Ерекше брендтік эмодзи стилі */
-.brand-emoji{font-family:"Segoe UI Emoji","Apple Color Emoji",sans-serif;filter:drop-shadow(0 0 7px rgba(173,111,255,.35))}
-.custom-reactions{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.custom-reactions button{border:1px solid rgba(186,156,255,.28);background:linear-gradient(135deg,rgba(126,87,255,.2),rgba(255,76,166,.14));border-radius:999px;padding:5px 9px!important;min-height:32px!important;cursor:pointer}
-.custom-reactions button:active{transform:scale(.94)}
-</style>
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(25px, 6vw, 38px);
+    }
 
-</head>
-<body>
-<div id="auth">
-<div class="auth">
-<div class="logo">✦ MultАрхивЧаты</div>
-<div class="subtitle">Қазақша анимациялар мен тікелей эфирлер чаты</div>
-<div class="tabs"><button id="loginTab" class="active">Кіру</button><button id="registerTab">Тіркелу</button></div>
-<form id="loginForm" class="form"><input id="login" placeholder="Логин" required><input id="password" type="password" placeholder="Пароль" required><button class="main-btn">Кіру</button></form>
-<form id="registerForm" class="form hidden"><input id="regLogin" placeholder="Логин" minlength="3" maxlength="24" required><input id="regPassword" type="password" placeholder="Пароль" minlength="6" required><input id="regPassword2" type="password" placeholder="Парольді қайталаңыз" minlength="6" required><button class="main-btn">Тіркелу</button></form>
-<div id="authError" class="error"></div>
-<div class="rules-login"><strong>📜 Сайт ережесі</strong><br><br>• Қорлауға болмайды.<br>• Спам жасауға болмайды.<br>• ҮЛКЕН ӘРІПТЕРМЕН жаппай жазуға болмайды.<br>• Жарнама және артық сілтемелерге тыйым салынады.<br>• Модератор шешімін құрметтеу қажет.</div>
-</div></div>
+    h1 span {
+      color: #ffcf40;
+    }
 
-<div id="site" class="hidden">
-<header><div class="header-title">✦ MultАрхивЧаты</div><div class="header-right"><span class="online">🟢 Онлайн: <b id="onlineCount">0</b></span><button class="logout" onclick="logout()">Шығу</button></div></header>
-<div class="container">
-<div class="card chat">
+    .description {
+      color: #d0d0d0;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
 
-<!-- YouTube трансляция панелі -->
-<section class="yt-stage" id="youtubeStage">
-  <div class="yt-stage-head">
-    <div>
-      <div class="eyebrow">LIVE BROADCAST</div>
-      <h3>Тікелей эфир</h3>
-      <p class="yt-note">YouTube трансляциясын сілтеме арқылы осы шағын экраннан көріңіз.</p>
-    </div>
-    <span class="yt-status" id="ytStatus">Эфир күтілуде</span>
-  </div>
-  <div class="yt-frame-wrap">
-    <div class="yt-placeholder" id="ytPlaceholder">
-      <span>▶</span>
-      <b>YouTube сілтемесін күтіңіз</b>
-      <small>Әкімші немесе модератор эфир сілтемесін енгізгенде экран осында ашылады.</small>
-    </div>
-    <iframe id="youtubeFrame" title="YouTube тікелей эфирі"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-  </div>
-  <div class="yt-controls" id="ytManagerControls" hidden>
-    <input id="youtubeUrlInput" type="url" placeholder="YouTube сілтемесі (мысалы: https://www.youtube.com/watch?v=...)">
-    <button id="loadYoutubeBtn" type="button">Сілтемені жариялау</button>
-    <button id="clearYoutubeBtn" type="button" class="secondary">Экранды тазалау</button>
-  </div>
-</section>
+    .card {
+      padding: 25px;
+      border: 1px solid #6d531b;
+      border-radius: 22px;
+      background: linear-gradient(145deg, #191919, #0e0e0e);
+      box-shadow: 0 15px 45px #0008;
+    }
 
-<div class="chat-top"><div><div class="chat-name">Жалпы чат</div><span style="color:#8b949e;font-size:13px">Барлық пайдаланушы осы жерде сөйлесе алады</span></div><div class="chat-actions" id="adminButtons"></div></div>
+    .question {
+      font-size: 19px;
+      font-weight: bold;
+      margin: 0 0 20px;
+    }
 
-<div class="video-stage">
-  <div class="video-head">
-    <div class="live-label"><span class="live-dot" id="liveDot"></span> Тікелей эфир <span class="live-status" id="liveStatus">Күтілуде</span></div>
-    <span style="font-size:11px;color:#aeb8dc">MultАрхивЧаты LIVE</span>
-  </div>
-  <div class="video-wrap">
-    <video id="liveVideo" playsinline muted controlslist="nodownload"></video>
-    <div class="video-placeholder" id="videoPlaceholder">
-      <div class="big">🎬</div>
-      <strong>Эфир әзірге басталған жоқ</strong>
-      <div style="margin-top:8px;font-size:13px">Басқарушы немесе модератор бейне жариялаған кезде осы жерде көрсетіледі.</div>
-    </div>
-  </div>
-  <div class="video-tools">
-    <button id="videoPlay">▶ Ойнату</button>
-    <button id="videoMute">🔇 Дыбыс</button>
-    <input id="videoVolume" type="range" min="0" max="1" step=".05" value=".8" aria-label="Дыбыс деңгейі">
-    <button id="videoFullscreen">⛶ Үлкейту</button>
-    <span style="flex:1"></span>
-    <span id="videoFileName" style="font-size:11px;color:#aeb8dc">Бейне таңдалмаған</span>
-  </div>
-  <div class="admin-video-panel" id="adminVideoPanel">
-    <p class="video-note">Басқару панелі: құрылғыдан бейне таңдаңыз. Бұл бір файлдық демо-нұсқада бейне осы браузерде ойнатылады.</p>
-    <div style="display:flex;gap:8px;flex-wrap:wrap">
-      <label class="primary">📁 Бейне жүктеу<input id="videoUpload" type="file" accept="video/*" hidden></label>
-      <button class="primary" id="startLive">🔴 Тікелей эфирді бастау</button>
-      <button id="endLive">⏹ Эфирді аяқтау</button>
-    </div>
-  </div>
-</div>
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
 
-<div id="messages" class="messages"></div>
-<div class="composer">
-<div class="emojis"><button onclick="emoji('😀')">😀</button><button onclick="emoji('😂')">😂</button><button onclick="emoji('❤️')">❤️</button><button onclick="emoji('👍')">👍</button><button onclick="emoji('🔥')">🔥</button><button onclick="emoji('🎉')">🎉</button><button onclick="emoji('😎')">😎</button><button onclick="emoji('🤖')">🤖</button><button onclick="emoji('🤣')">🤣</button><button onclick="emoji('🥳')">🥳</button></div>
-<div class="send"><input id="messageInput" maxlength="500" placeholder="Хабарлама жазыңыз..."><button onclick="sendMessage()">Жіберу</button></div>
-<div id="chatError" class="error"></div>
-</div></div>
+    .option {
+      min-height: 125px;
+      padding: 18px 10px;
+      border: 1px solid #444;
+      border-radius: 15px;
+      background: #202020;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: .25s;
+    }
 
-<div class="side">
-<div class="card side-card"><h3>👤 Менің аккаунтым</h3><div id="profile"></div><label class="upload">🖼️ Аватар қою<input id="avatarInput" type="file" accept="image/*" hidden onchange="changeAvatar(this)"></label></div>
-<div class="card side-card"><h3>👥 Пайдаланушылар</h3><div id="users" class="user-list"></div></div>
-<div class="card side-card"><h3>📜 Сайт ережелері</h3><ul class="rules"><li>Қорлау және балағат сөздерге тыйым салынады.</li><li>Спам жасауға болмайды.</li><li>ҮЛКЕН ӘРІПТЕРМЕН жаппай жазуға болмайды.</li><li>Жарнама және қажетсіз сілтемелер жібермеңіз.</li><li>Бір пайдаланушыға әдейі кедергі жасауға болмайды.</li><li>Модератор ережені бұзған адамға мут бере алады.</li><li>Басқарушы модератор тағайындай алады.</li><li>Басқарушы чатты тазалай алады.</li><li>Басқарушы чатқа сурет жібере алады.</li></ul></div>
-<div class="card side-card"><h3>🛠️ Жаңарту</h3><div class="update"><strong>Соңғы жаңарту:</strong><br>21.09.2026, 13:25<br><br><strong>Келесі жаңарту:</strong><br>03.12.2026<br><br>Жаңа толық сайт жуырда.</div></div>
-</div></div></div>
+    .option:hover {
+      border-color: #ffcf40;
+      transform: translateY(-3px);
+    }
 
-<script>
-const DB_KEY="MINI_CHAT_DATABASE_V1";
-let db=JSON.parse(localStorage.getItem(DB_KEY)||"null");
-if(!db){db={users:[{id:"00000001",login:"Admin",password:"Askhat25605",role:"admin",avatar:"",mutedUntil:0,created:new Date().toISOString()}],messages:[],current:null};saveDB();}
-function saveDB(){localStorage.setItem(DB_KEY,JSON.stringify(db));}
-let currentUser=db.current?db.users.find(u=>u.id===db.current):null;
+    .option.selected {
+      border: 2px solid #ffcf40;
+      background: #30270e;
+      box-shadow: 0 0 18px #ffcf4020;
+    }
 
-loginTab.onclick=()=>{loginTab.classList.add("active");registerTab.classList.remove("active");loginForm.classList.remove("hidden");registerForm.classList.add("hidden");authError.textContent="";};
-registerTab.onclick=()=>{registerTab.classList.add("active");loginTab.classList.remove("active");registerForm.classList.remove("hidden");loginForm.classList.add("hidden");authError.textContent="";};
+    .emoji {
+      display: block;
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
 
-loginForm.onsubmit=function(e){e.preventDefault();let l=login.value.trim(),p=password.value;let user=db.users.find(u=>u.login.toLowerCase()===l.toLowerCase()&&u.password===p);if(!user){authError.textContent="❌ Логин немесе пароль қате.";return;}db.current=user.id;saveDB();currentUser=user;openSite();};
+    .submit {
+      width: 100%;
+      margin-top: 18px;
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(100deg, #eab51d, #ffe787);
+      color: #171000;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: .2s;
+    }
 
-registerForm.onsubmit=function(e){e.preventDefault();let l=regLogin.value.trim(),p=regPassword.value,p2=regPassword2.value;if(p!==p2){authError.textContent="❌ Парольдер бірдей емес.";return;}if(l.length<3){authError.textContent="❌ Логин кемінде 3 таңба болуы керек.";return;}if(p.length<6){authError.textContent="❌ Пароль кемінде 6 таңба болуы керек.";return;}if(db.users.some(u=>u.login.toLowerCase()===l.toLowerCase())){authError.textContent="❌ Бұл логин бұрын тіркелген.";return;}let max=0;db.users.forEach(u=>{let n=parseInt(u.id);if(n>max)max=n;});let user={id:String(max+1).padStart(8,"0"),login:l,password:p,role:"user",avatar:"",mutedUntil:0,created:new Date().toISOString()};db.users.push(user);db.current=user.id;saveDB();currentUser=user;openSite();};
+    .submit:hover {
+      transform: translateY(-2px);
+    }
 
-function openSite(){auth.classList.add("hidden");site.classList.remove("hidden");renderProfile();renderUsers();renderMessages();updateOnline();}
-function roleName(role){if(role==="admin")return"Басқарушы";if(role==="moderator")return"Модератор";return"Пайдаланушы";}
-function roleClass(role){if(role==="admin")return"admin-name";if(role==="moderator")return"moderator";return"user";}
+    .submit:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+      transform: none;
+    }
 
-function renderProfile(){let avatar=currentUser.avatar?`<img src="${currentUser.avatar}">`:"👤";profile.innerHTML=`<div class="profile"><div class="avatar">${avatar}</div><div><div class="username ${roleClass(currentUser.role)}">${escapeHTML(currentUser.login)}</div><div class="role ${roleClass(currentUser.role)}">${roleName(currentUser.role)}</div><div class="id">ID: ${currentUser.id}</div></div></div>`;renderAdminButtons();}
-function renderAdminButtons(){let box=document.getElementById("adminButtons");box.innerHTML="";if(currentUser.role==="admin"){box.innerHTML=`<button class="admin" onclick="clearChat()">🧹 Чатты тазалау</button><button onclick="uploadChatImage()">📷 Фото</button><input id="chatImage" type="file" accept="image/*" hidden onchange="sendChatImage(this)">`;}}
-function renderUsers(){users.innerHTML="";db.users.forEach(u=>{let actions="";if(currentUser.role==="admin"&&u.id!==currentUser.id){if(u.role==="user")actions+=`<button onclick="makeModerator('${u.id}')">Мод</button>`;if(u.role==="moderator")actions+=`<button onclick="removeModerator('${u.id}')">↩</button>`;}if((currentUser.role==="admin"||currentUser.role==="moderator")&&u.id!==currentUser.id&&u.role!=="admin")actions+=`<button onclick="giveMute('${u.id}')">🔇</button>`;let avatar=u.avatar?`<img src="${u.avatar}">`:"👤";users.innerHTML+=`<div class="user-row"><div class="user-info"><div class="small-avatar">${avatar}</div><div><div class="${roleClass(u.role)}">${escapeHTML(u.login)}</div><div class="id">${u.id} · ${roleName(u.role)}${u.mutedUntil>Date.now()?" · 🔇":""}</div></div></div><div class="user-actions">${actions}</div></div>`;});}
-function renderMessages(){messages.innerHTML="";db.messages.forEach(renderMessage);setTimeout(()=>{messages.scrollTop=messages.scrollHeight;},50);}
-function renderMessage(m){let user=db.users.find(u=>u.id===m.userId);if(!user)return;let avatar=user.avatar?`<img src="${user.avatar}">`:"👤";let div=document.createElement("div");div.className="message";div.innerHTML=`<div class="avatar">${avatar}</div><div class="message-content"><div class="message-header"><span class="username ${roleClass(user.role)}">${escapeHTML(user.login)}</span><span class="message-time">${new Date(m.time).toLocaleTimeString("kk-KZ",{hour:"2-digit",minute:"2-digit"})}</span></div>${m.text?`<div class="message-text">${escapeHTML(m.text)}</div>`:""}${m.image?`<img class="message-image" src="${m.image}">`:""}</div>`;messages.appendChild(div);}
+    .note {
+      color: #aaa;
+      font-size: 13px;
+      line-height: 1.6;
+      margin: 18px 0 0;
+    }
 
-function sendMessage(){chatError.textContent="";let text=messageInput.value.trim();if(!text)return;if(currentUser.mutedUntil&&currentUser.mutedUntil>Date.now()){let min=Math.ceil((currentUser.mutedUntil-Date.now())/60000);chatError.textContent="🔇 Сізге мут берілген. Қалған уақыт: "+min+" минут.";return;}let letters=text.replace(/[^A-Za-zА-Яа-яӘәҒғҚқҢңӨөҰұҮүҺһІі]/g,"");let upper=[...letters].filter(x=>x===x.toUpperCase()&&x!==x.toLowerCase()).length;if(currentUser.role==="user"&&letters.length>=8&&upper/letters.length>=0.8){chatError.textContent="⚠️ ҮЛКЕН ӘРІПТЕРМЕН толық жазуға болмайды.";return;}let last=db.messages[db.messages.length-1];if(last&&last.userId===currentUser.id&&last.text===text){chatError.textContent="⚠️ Бірдей хабарламаны қайта-қайта жібермеңіз.";return;}db.messages.push({userId:currentUser.id,text:text,image:"",time:Date.now()});saveDB();messageInput.value="";renderMessages();updateOnline();}
-function emoji(e){messageInput.value+=e;messageInput.focus();}
+    .hidden {
+      display: none !important;
+    }
 
-function makeModerator(id){if(currentUser.role!=="admin")return;let u=db.users.find(x=>x.id===id);if(!u)return;u.role="moderator";saveDB();renderUsers();alert("🛡️ "+u.login+" енді Модератор болды.");}
-function removeModerator(id){if(currentUser.role!=="admin")return;let u=db.users.find(x=>x.id===id);if(!u)return;u.role="user";saveDB();renderUsers();}
+    .thanks {
+      animation: appear .6s ease both;
+    }
 
-function giveMute(id){if(currentUser.role!=="admin"&&currentUser.role!=="moderator")return;let u=db.users.find(x=>x.id===id);if(!u||u.role==="admin")return;if(currentUser.role==="moderator"&&u.role==="moderator"){alert("Модератор басқа модераторға мут бере алмайды.");return;}let min=prompt("Мут қанша минутқа беріледі?","10");if(min===null)return;min=parseInt(min);if(isNaN(min)||min<1||min>1440){alert("1–1440 минут аралығын енгізіңіз.");return;}u.mutedUntil=Date.now()+min*60000;saveDB();renderUsers();alert("🔇 "+u.login+" пайдаланушысына "+min+" минут мут берілді.");}
+    .check {
+      width: 72px;
+      height: 72px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: #ffcf40;
+      color: #151000;
+      font-size: 38px;
+      animation: pop .6s ease;
+    }
 
-function clearChat(){if(currentUser.role!=="admin")return;if(!confirm("⚠️ Бүкіл чат хабарламаларын өшіру керек пе?"))return;db.messages=[];saveDB();renderMessages();}
-function uploadChatImage(){if(currentUser.role!=="admin")return;document.getElementById("chatImage").click();}
-function sendChatImage(input){let file=input.files[0];if(!file)return;let reader=new FileReader();reader.onload=function(){db.messages.push({userId:currentUser.id,text:"",image:reader.result,time:Date.now()});saveDB();renderMessages();};reader.readAsDataURL(file);input.value="";}
-function changeAvatar(input){let file=input.files[0];if(!file)return;let reader=new FileReader();reader.onload=function(){currentUser.avatar=reader.result;let u=db.users.find(x=>x.id===currentUser.id);u.avatar=reader.result;saveDB();renderProfile();renderUsers();renderMessages();};reader.readAsDataURL(file);}
-function updateOnline(){let active=localStorage.getItem("MINI_CHAT_ACTIVE_USERS");let arr=active?JSON.parse(active):[];if(!arr.includes(currentUser.id))arr.push(currentUser.id);localStorage.setItem("MINI_CHAT_ACTIVE_USERS",JSON.stringify(arr));onlineCount.textContent=arr.length;}
-function logout(){db.current=null;saveDB();location.reload();}
+    .thanks h2 {
+      color: #ffe787;
+    }
 
-/* Видео басқару */
-let liveObjectUrl="";
-let liveStarted=false;
-const liveVideo=document.getElementById("liveVideo");
-const videoPlaceholder=document.getElementById("videoPlaceholder");
-const videoPanel=document.getElementById("adminVideoPanel");
-const liveStatus=document.getElementById("liveStatus");
-const videoFileName=document.getElementById("videoFileName");
+    .thanks p {
+      line-height: 1.7;
+      color: #ddd;
+    }
 
-function canManageVideo(){
-  return currentUser && (currentUser.role==="admin" || currentUser.role==="moderator");
-}
-function renderVideoPermissions(){
-  videoPanel.classList.toggle("show",canManageVideo());
-}
-function announceSystem(text){
-  db.messages.push({userId:currentUser.id,text:text,image:"",time:Date.now()});
-  saveDB();renderMessages();
-}
-document.getElementById("videoUpload").addEventListener("change",function(){
-  const file=this.files[0]; if(!file)return;
-  if(!file.type.startsWith("video/")){alert("Тек бейне файлын таңдаңыз.");return;}
-  if(liveObjectUrl)URL.revokeObjectURL(liveObjectUrl);
-  liveObjectUrl=URL.createObjectURL(file);
-  liveVideo.src=liveObjectUrl;
-  liveVideo.load();
-  videoFileName.textContent=file.name;
-  videoPlaceholder.style.display="none";
-  liveStatus.textContent="Бейне дайын";
-});
-document.getElementById("startLive").addEventListener("click",function(){
-  if(!canManageVideo())return;
-  if(!liveVideo.src){alert("Алдымен бейне жүктеңіз.");return;}
-  liveStarted=true;
-  liveStatus.textContent="Эфир жүріп жатыр";
-  liveStatus.classList.add("active");
-  videoPlaceholder.style.display="none";
-  liveVideo.muted=false;
-  liveVideo.play().catch(()=>{liveVideo.muted=true;liveVideo.play().catch(()=>{});});
-  announceSystem("🔴 "+currentUser.login+" тікелей эфирді бастады.");
-});
-document.getElementById("endLive").addEventListener("click",function(){
-  if(!canManageVideo())return;
-  liveStarted=false;
-  liveVideo.pause();
-  liveStatus.textContent="Аяқталды";
-  liveStatus.classList.remove("active");
-  announceSystem("⏹ "+currentUser.login+" тікелей эфирді аяқтады.");
-});
-document.getElementById("videoPlay").addEventListener("click",function(){
-  if(liveVideo.paused)liveVideo.play().catch(()=>{});else liveVideo.pause();
-  this.textContent=liveVideo.paused?"▶ Ойнату":"Ⅱ Тоқтату";
-});
-document.getElementById("videoMute").addEventListener("click",function(){
-  liveVideo.muted=!liveVideo.muted;
-  this.textContent=liveVideo.muted?"🔇 Дыбыс":"🔊 Дыбыс";
-});
-document.getElementById("videoVolume").addEventListener("input",function(){
-  liveVideo.volume=Number(this.value);
-  liveVideo.muted=Number(this.value)===0;
-  document.getElementById("videoMute").textContent=liveVideo.muted?"🔇 Дыбыс":"🔊 Дыбыс";
-});
-document.getElementById("videoFullscreen").addEventListener("click",function(){
-  const stage=document.querySelector(".video-stage");
-  if(document.fullscreenElement)document.exitFullscreen();
-  else stage.requestFullscreen?.();
-});
-liveVideo.addEventListener("ended",()=>{document.getElementById("videoPlay").textContent="▶ Қайта ойнату";});
-const oldOpenSite=openSite;
-openSite=function(){oldOpenSite();renderVideoPermissions();};
+    .thanks-link {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 12px 22px;
+      border-radius: 10px;
+      background: #ffcf40;
+      color: #171000;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-function escapeHTML(text){return String(text).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");}
-messageInput.addEventListener("keydown",function(e){if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendMessage();}});
-if(currentUser)openSite();
-</script>
+    footer {
+      margin-top: 20px;
+      color: #777;
+      font-size: 12px;
+    }
 
-<script>
-(function(){
-  const frame = document.getElementById('youtubeFrame');
-  const placeholder = document.getElementById('ytPlaceholder');
-  const input = document.getElementById('youtubeUrlInput');
-  const loadBtn = document.getElementById('loadYoutubeBtn');
-  const clearBtn = document.getElementById('clearYoutubeBtn');
-  const controls = document.getElementById('ytManagerControls');
-  const status = document.getElementById('ytStatus');
-
-  function getYoutubeId(url){
-    try{
-      const u = new URL(url);
-      if(u.hostname.includes('youtu.be')) return u.pathname.slice(1).split('/')[0];
-      if(u.hostname.includes('youtube.com')){
-        if(u.pathname === '/watch') return u.searchParams.get('v');
-        const parts = u.pathname.split('/').filter(Boolean);
-        const i = parts.findIndex(x => ['live','embed','shorts'].includes(x));
-        if(i >= 0 && parts[i+1]) return parts[i+1];
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
       }
-    }catch(e){}
-    return null;
-  }
-  function showYoutube(url){
-    const id = getYoutubeId(url);
-    if(!id){ alert('YouTube сілтемесі дұрыс емес.'); return; }
-    frame.src = 'https://www.youtube.com/embed/' + encodeURIComponent(id) + '?autoplay=1&rel=0';
-    frame.style.display = 'block';
-    placeholder.style.display = 'none';
-    status.textContent = 'YouTube эфирі жарияланды';
-    try{ localStorage.setItem('mult_archiv_youtube_url', url); }catch(e){}
-  }
-  function clearYoutube(){
-    frame.src = '';
-    frame.style.display = 'none';
-    placeholder.style.display = 'flex';
-    status.textContent = 'Эфир күтілуде';
-    try{ localStorage.removeItem('mult_archiv_youtube_url'); }catch(e){}
-  }
-  const currentUser = window.currentUser || window.current || null;
-  const role = (currentUser && (currentUser.role || currentUser.type)) || '';
-  if(['admin','moderator','модератор','әкімші'].includes(String(role).toLowerCase())) controls.hidden = false;
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-  loadBtn && loadBtn.addEventListener('click',()=>showYoutube(input.value.trim()));
-  clearBtn && clearBtn.addEventListener('click',clearYoutube);
+    @keyframes pop {
+      0% { transform: scale(.3); opacity: 0; }
+      75% { transform: scale(1.12); }
+      100% { transform: scale(1); opacity: 1; }
+    }
 
-  try{
-    const saved = localStorage.getItem('mult_archiv_youtube_url');
-    if(saved) showYoutube(saved);
-  }catch(e){}
-})();
-</script>
+    @media (max-width: 460px) {
+      .options {
+        grid-template-columns: 1fr;
+      }
 
+      .option {
+        min-height: 90px;
+      }
 
-<script>
-(function(){
-  const emojis = ['꧁༺✨༻꧂','𓆩⚡𓆪','☾⋆⁺₊⋆','⟡','꒰ঌ♡໒꒱','𖤐','༄','ᯓ★','◈','𓂀','✦','☄️'];
-  const candidates = document.querySelectorAll('textarea,input[type="text"]');
-  const target = candidates[candidates.length-1];
-  if(!target || document.querySelector('.custom-reactions')) return;
-  const box = document.createElement('div');
-  box.className='custom-reactions';
-  box.setAttribute('aria-label','Ерекше эмодзилер');
-  emojis.forEach(symbol=>{
-    const b=document.createElement('button');
-    b.type='button';
-    b.textContent=symbol;
-    b.title='Эмодзиді қосу';
-    b.addEventListener('click',()=>{
-      const start=target.selectionStart ?? target.value.length;
-      const end=target.selectionEnd ?? target.value.length;
-      target.value=target.value.slice(0,start)+symbol+target.value.slice(end);
-      target.focus();
-      const pos=start+symbol.length;
-      try{target.setSelectionRange(pos,pos)}catch(e){}
-      target.dispatchEvent(new Event('input',{bubbles:true}));
+      .logo {
+        width: 140px;
+        height: 140px;
+      }
+
+      .card {
+        padding: 20px 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+
+    <!-- Логотип assets бумасынан алынады -->
+    <img
+      class="logo"
+      src="assets/logo.png"
+      alt="MULTАрхив логотипі"
+    >
+
+    <h1><span>MULT</span>Архив🇰🇿Forum</h1>
+
+    <p class="description">
+      Сіз үшін қай нұсқа қолайлы?
+      Таңдауыңызды білдіріңіз.
+    </p>
+
+    <section class="card" id="voteCard">
+      <p class="question">Қай нұсқаны қолдайсыз?</p>
+
+      <div class="options">
+        <button class="option" data-choice="siteTelegram"
+                aria-pressed="false">
+          <span class="emoji">🌐</span>
+          Сайт және Telegram
+        </button>
+
+        <button class="option" data-choice="tvChannel"
+                aria-pressed="false">
+          <span class="emoji">📺</span>
+          Жеке телеарна ашу
+        </button>
+      </div>
+
+      <button class="submit" id="voteButton" disabled>
+        Дауыс беру
+      </button>
+
+      <p class="note">
+        Дауыс беру аяқталғанға дейін нәтижелер көрсетілмейді.
+        Қорытынды нақты жиналған дауыстар негізінде жарияланады.
+      </p>
+    </section>
+
+    <section class="card thanks hidden" id="thanksCard"
+             aria-live="polite">
+      <div class="check">✓</div>
+
+      <h2>Дауыс берілді!</h2>
+
+      <p>
+        Рақмет! Сіздің таңдауыңыз біз үшін маңызды. 💛
+      </p>
+
+      <p>Қатысқаныңыз үшін алғыс білдіреміз!</p>
+
+      <a class="thanks-link" href="#"
+         id="thanksLink">Рақмет! ✨</a>
+    </section>
+
+    <footer>
+      MULTАрхив🇰🇿Forum
+    </footer>
+  </main>
+
+  <script>
+    const STORAGE_KEY = "multarhiv_votes_v1";
+    const VOTED_KEY = "multarhiv_voted_v1";
+
+    const voteCard = document.getElementById("voteCard");
+    const thanksCard = document.getElementById("thanksCard");
+    const voteButton = document.getElementById("voteButton");
+    const options = document.querySelectorAll(".option");
+
+    let selectedChoice = null;
+
+    // Осы браузерден бұрын дауыс берілгенін тексеру
+    if (localStorage.getItem(VOTED_KEY)) {
+      voteCard.innerHTML = `
+        <h2 style="color:#ffe787">Рақмет!</h2>
+        <p>Сіздің таңдауыңыз осы браузерде тіркелген.</p>
+      `;
+    }
+
+    options.forEach(option => {
+      option.addEventListener("click", () => {
+        if (localStorage.getItem(VOTED_KEY)) return;
+
+        selectedChoice = option.dataset.choice;
+
+        options.forEach(item => {
+          const active = item === option;
+          item.classList.toggle("selected", active);
+          item.setAttribute("aria-pressed", String(active));
+        });
+
+        voteButton.disabled = false;
+      });
     });
-    box.appendChild(b);
-  });
-  target.parentElement && target.parentElement.appendChild(box);
-})();
-</script>
 
+    voteButton.addEventListener("click", () => {
+      if (!selectedChoice ||
+          localStorage.getItem(VOTED_KEY)) return;
+
+      let votes = {
+        siteTelegram: 0,
+        tvChannel: 0
+      };
+
+      try {
+        votes = {
+          ...votes,
+          ...JSON.parse(
+            localStorage.getItem(STORAGE_KEY) || "{}"
+          )
+        };
+      } catch (error) {
+        console.warn("Дауыс деректерін оқу мүмкін болмады.");
+      }
+
+      votes[selectedChoice] =
+        (Number(votes[selectedChoice]) || 0) + 1;
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(votes));
+      localStorage.setItem(VOTED_KEY, "1");
+
+      voteCard.classList.add("hidden");
+      thanksCard.classList.remove("hidden");
+    });
+
+    // Бұл батырма алғыс хабарламасын ғана көрсетеді.
+    document.getElementById("thanksLink").addEventListener(
+      "click", event => {
+        event.preventDefault();
+        thanksCard.innerHTML = `
+          <div class="check">✓</div>
+          <h2>Үлкен рақмет!</h2>
+          <p>Қатысқаныңыз үшін алғыс білдіреміз! 💛</p>
+        `;
+      }
+    );
+  </script>
 </body>
-  </html>
+</html>
